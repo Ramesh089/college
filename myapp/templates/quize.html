@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybercrime Quiz - CyberCrime Portal</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font for Better Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1.5s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-roboto">
+
+    <!-- Navbar -->
+    <header>
+        <nav class="flex items-center justify-between bg-gray-800 p-4">
+            <h1 class="text-white text-2xl font-semibold opacity-50">Cybercrime Portal</h1>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'home' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Home</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">About</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Contact</a></li>
+                <li><a href="{% url 'report' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Reports</a></li>
+                {% comment %} <li><a href="{% url 'quize' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Quizzes</a></li> {% endcomment %}
+            </ul>
+            <div class="flex space-x-4">
+                <button class="bg-orange-300 text-white px-5 py-2 rounded-md hover:bg-orange-500">Login</button>
+                <button class="bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-500">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Buttons for Reading & Questions -->
+    <div class="container mx-auto flex justify-center mt-10 space-x-8">
+        <button id="readingBtn" class="bg-blue-800 text-white py-2 px-6 rounded-md hover:bg-blue-700" onclick="showReading()">Reading</button>
+        <button id="questionsBtn" class="bg-blue-800 text-white py-2 px-6 rounded-md hover:bg-blue-700" onclick="showQuestions()">Questions</button>
+    </div>
+
+    <!-- Reading Section (Initially visible) -->
+    <div id="readingSection" class="container mx-auto px-4 py-12 ">
+        <div class="flex flex-wrap justify-between items-center bg-white shadow-lg rounded-xl p-6 h-[500px]">
+            <!-- Content -->
+            <div class="w-full sm:w-2/3 mb-6 sm:mb-0">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">What is Cyber Crime?</h2>
+                <p class="text-gray-600 text-lg">
+                    Cybercrime is any criminal activity that involves a computer, networked device, or a network. 
+                    It includes a wide range of offenses, from hacking, identity theft, online fraud, to cyberbullying.
+                    As the digital world grows, so does the risk of cybercrime. Criminals use the internet to carry out malicious
+                    activities for financial gain, espionage, or to cause harm.
+                </p>
+
+                <!-- Read More Button -->
+                <button id="readMoreBtn" class="ml-6 mt-6 px-6 py-3 text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600">
+                    Read More
+                </button>
+
+                <!-- Hidden content for Read More -->
+                <div id="extraContent" class="hidden mt-4 text-gray-600">
+                    <p class="text-lg">
+                        Cybercrime can affect individuals, businesses, and governments. Common examples of cybercrime include:
+                        hacking into systems, data breaches, phishing scams, and spreading viruses or malware. 
+                        It’s essential to stay informed and take steps to protect personal and organizational data from these cyber threats.
+                    </p>
+                    <p class="text-lg mt-2">
+                        To combat cybercrime, various law enforcement agencies, along with international cooperation, have made efforts to fight against cyber threats.
+                        Awareness, digital literacy, and security measures like strong passwords, encryption, and two-factor authentication can help prevent cybercrimes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="w-full sm:w-1/3" id="rotet">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.jtfKcm6B5MD4SMIcNun-xgHaFj&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="rounded-lg shadow-lg ml-6 " width="400px">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-wrap justify-between items-center bg-white shadow-lg rounded-xl p-6 h-[500px]">
+            <!-- Image on the Left Side -->
+            <div class="w-full sm:w-1/3 mb-6 sm:mb-0">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.jtfKcm6B5MD4SMIcNun-xgHaFj&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="rounded-lg shadow-lg" width="400px">
+            </div>
+    
+            <!-- Content on the Right Side -->
+            <div class="w-full sm:w-2/3">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">What is Cyber Crime?</h2>
+                <p class="text-gray-600 text-lg">
+                    Cybercrime is any criminal activity that involves a computer, networked device, or a network. 
+                    It includes a wide range of offenses, from hacking, identity theft, online fraud, to cyberbullying.
+                    As the digital world grows, so does the risk of cybercrime. Criminals use the internet to carry out malicious
+                    activities for financial gain, espionage, or to cause harm.
+                </p>
+    
+                <!-- Read More Button -->
+                <button id="readMoreBtn" class="read-more-btn ml-6 mt-6 px-6 py-3 text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600">
+                    Read More
+                </button>
+    
+                <!-- Hidden content for Read More -->
+                <div id="extraContent" class="hidden mt-4 text-gray-600">
+                    <p class="text-lg">
+                        Cybercrime can affect individuals, businesses, and governments. Common examples of cybercrime include:
+                        hacking into systems, data breaches, phishing scams, and spreading viruses or malware. 
+                        It’s essential to stay informed and take steps to protect personal and organizational data from these cyber threats.
+                    </p>
+                    <p class="text-lg mt-2">
+                        To combat cybercrime, various law enforcement agencies, along with international cooperation, have made efforts to fight against cyber threats.
+                        Awareness, digital literacy, and security measures like strong passwords, encryption, and two-factor authentication can help prevent cybercrimes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="readingSection" class="container mx-auto px-4 py-12 ">
+        <div class="flex flex-wrap justify-between items-center bg-white shadow-lg rounded-xl p-6 h-[500px]">
+            <!-- Content -->
+            <div class="w-full sm:w-2/3 mb-6 sm:mb-0">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">What is Cyber Crime?</h2>
+                <p class="text-gray-600 text-lg">
+                    Cybercrime is any criminal activity that involves a computer, networked device, or a network. 
+                    It includes a wide range of offenses, from hacking, identity theft, online fraud, to cyberbullying.
+                    As the digital world grows, so does the risk of cybercrime. Criminals use the internet to carry out malicious
+                    activities for financial gain, espionage, or to cause harm.
+                </p>
+
+                <!-- Read More Button -->
+                <button id="readMoreBtn" class="ml-6 mt-6 px-6 py-3 text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600">
+                    Read More
+                </button>
+
+                <!-- Hidden content for Read More -->
+                <div id="extraContent" class="hidden mt-4 text-gray-600">
+                    <p class="text-lg">
+                        Cybercrime can affect individuals, businesses, and governments. Common examples of cybercrime include:
+                        hacking into systems, data breaches, phishing scams, and spreading viruses or malware. 
+                        It’s essential to stay informed and take steps to protect personal and organizational data from these cyber threats.
+                    </p>
+                    <p class="text-lg mt-2">
+                        To combat cybercrime, various law enforcement agencies, along with international cooperation, have made efforts to fight against cyber threats.
+                        Awareness, digital literacy, and security measures like strong passwords, encryption, and two-factor authentication can help prevent cybercrimes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="w-full sm:w-1/3" id="rotet">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.jtfKcm6B5MD4SMIcNun-xgHaFj&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="rounded-lg shadow-lg ml-6 " width="400px">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-wrap justify-between items-center bg-white shadow-lg rounded-xl p-6 h-[500px]">
+            <!-- Image on the Left Side -->
+            <div class="w-full sm:w-1/3 mb-6 sm:mb-0">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.jtfKcm6B5MD4SMIcNun-xgHaFj&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="rounded-lg shadow-lg" width="400px">
+            </div>
+    
+            <!-- Content on the Right Side -->
+            <div class="w-full sm:w-2/3">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">What is Cyber Crime?</h2>
+                <p class="text-gray-600 text-lg">
+                    Cybercrime is any criminal activity that involves a computer, networked device, or a network. 
+                    It includes a wide range of offenses, from hacking, identity theft, online fraud, to cyberbullying.
+                    As the digital world grows, so does the risk of cybercrime. Criminals use the internet to carry out malicious
+                    activities for financial gain, espionage, or to cause harm.
+                </p>
+    
+                <!-- Read More Button -->
+                <button id="readMoreBtn" class="read-more-btn ml-6 mt-6 px-6 py-3 text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600">
+                    Read More
+                </button>
+    
+                <!-- Hidden content for Read More -->
+                <div id="extraContent" class="hidden mt-4 text-gray-600">
+                    <p class="text-lg">
+                        Cybercrime can affect individuals, businesses, and governments. Common examples of cybercrime include:
+                        hacking into systems, data breaches, phishing scams, and spreading viruses or malware. 
+                        It’s essential to stay informed and take steps to protect personal and organizational data from these cyber threats.
+                    </p>
+                    <p class="text-lg mt-2">
+                        To combat cybercrime, various law enforcement agencies, along with international cooperation, have made efforts to fight against cyber threats.
+                        Awareness, digital literacy, and security measures like strong passwords, encryption, and two-factor authentication can help prevent cybercrimes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Section (Initially Hidden) -->
+    <section id="questionsSection" class="hidden bg-white py-16 px-4 sm:px-8 md:px-16 mt-10">
+        <div class="container mx-auto text-center fade-in">
+            <h1 class="text-4xl font-bold text-blue-800 mb-6">Cybercrime Knowledge Quiz</h1>
+            <p class="text-lg text-gray-600 mb-8">
+                Now that you've learned about cybercrimes, it's time to test your knowledge. Answer the questions below to find out how much you know!
+            </p>
+
+            <!-- Quiz Form -->
+            <div class="bg-blue-100 p-8 rounded-lg shadow-lg slide-up">
+                <form id="quizForm" class="space-y-6">
+                    <!-- Question 1 -->
+                    <div>
+                        <label class="block text-lg text-gray-700">1. What is a phishing attack?</label>
+                        <select class="w-full p-2 border border-gray-300 rounded-md" id="q1" required>
+                            <option value="">Select an Answer</option>
+                            <option value="a">A type of malware that locks your files</option>
+                            <option value="b">An attack where a person impersonates a legitimate entity to steal personal information</option>
+                            <option value="c">An attack where hackers overload a server with traffic</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div>
+                        <label class="block text-lg text-gray-700">2. What is ransomware?</label>
+                        <select class="w-full p-2 border border-gray-300 rounded-md" id="q2" required>
+                            <option value="">Select an Answer</option>
+                            <option value="a">A type of malware that steals personal information</option>
+                            <option value="b">An attack where a victim is blackmailed to pay money to decrypt files</option>
+                            <option value="c">A type of phishing scam</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div>
+                        <label class="block text-lg text-gray-700">3. What does DDoS stand for?</label>
+                        <select class="w-full p-2 border border-gray-300 rounded-md" id="q3" required>
+                            <option value="">Select an Answer</option>
+                            <option value="a">Distributed Denial of Service</option>
+                            <option value="b">Data Delivery over Server</option>
+                            <option value="c">Direct Denial of Service</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div>
+                        <label class="block text-lg text-gray-700">4. What is a Man-in-the-Middle attack?</label>
+                        <select class="w-full p-2 border border-gray-300 rounded-md" id="q4" required>
+                            <option value="">Select an Answer</option>
+                            <option value="a">An attack where a hacker intercepts communication between two parties</option>
+                            <option value="b">A virus that locks a user’s files</option>
+                            <option value="c">An attack on a website using multiple sources</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="bg-blue-800 text-white py-2 px-6 rounded-md">Submit Quiz</button>
+                </form>
+
+                <div id="result" class="mt-8 text-2xl font-bold text-blue-800 hidden">
+                    <p id="resultText" class="text-lg text-gray-600"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-4 text-center">
+        <p>&copy; 2025 CyberCrime Portal. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript to Handle Quiz and Toggle Sections -->
+    <script>
+        function showReading() {
+            document.getElementById('readingSection').classList.remove('hidden');
+            document.getElementById('questionsSection').classList.add('hidden');
+        }
+
+        function showQuestions() {
+            document.getElementById('questionsSection').classList.remove('hidden');
+            document.getElementById('readingSection').classList.add('hidden');
+        }
+
+        // Handle quiz submission and answer checking
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let score = 0;
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'a',
+                q4: 'a'
+            };
+
+            // Check answers and give feedback
+            for (let i = 1; i <= 4; i++) {
+                const userAnswer = document.getElementById(`q${i}`).value;
+                const resultDiv = document.createElement('div');
+                if (userAnswer === correctAnswers[`q${i}`]) {
+                    score++;
+                    resultDiv.textContent = `Question ${i}: Correct Answer`;
+                    resultDiv.className = 'text-green-500'; // Correct answer
+                } else {
+                    resultDiv.textContent = `Question ${i}: Wrong Answer`;
+                    resultDiv.className = 'text-red-500'; // Wrong answer
+                }
+                document.getElementById('result').appendChild(resultDiv);
+            }
+
+            // Display overall result
+            const resultText = document.getElementById('resultText');
+            if (score === 4) {
+                resultText.textContent = 'Excellent! You got all the answers correct. You are a Cybercrime Expert!';
+            } else if (score === 3) {
+                resultText.textContent = 'Good Job! You got 3 out of 4 correct.';
+            } else {
+                resultText.textContent = 'You need to study more. Try again!';
+            }
+            document.getElementById('result').classList.remove('hidden');
+        });
+
+        // Handle Read More functionality
+        document.getElementById('readMoreBtn').addEventListener('click', function() {
+            document.getElementById('extraContent').classList.remove('hidden');
+            document.getElementById('readMoreBtn').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

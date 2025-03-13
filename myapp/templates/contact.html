@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CyberCrime Portal</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font for Better Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1.5s ease-out;
+        }
+
+        /* Custom form styles */
+        .form-input {
+            border-radius: 0.375rem;
+            border: 1px solid #E5E7EB;
+            padding: 1rem;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            border-color: #3B82F6;
+            outline: none;
+        }
+
+        .form-btn {
+            background-color: #3B82F6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #2563EB;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-roboto">
+
+    <!-- Navbar -->
+    <header>
+        <nav class="flex items-center justify-between bg-gray-800 p-4">
+            <h1 class="text-white text-2xl font-semibold opacity-50">Cybercrime Portal</h1>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'home' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Home</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">About</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Contact</a></li>
+                <li><a href="{% url 'report' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Reports</a></li>
+                {% comment %} <li><a href="{% url 'quize' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Quizzes</a></li> {% endcomment %}
+            </ul>
+            <div class="flex space-x-4">
+                <button class="bg-orange-300 text-white px-5 py-2 rounded-md hover:bg-orange-500">Login</button>
+                <button class="bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-500">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="container mx-auto py-16 px-4 sm:px-8 md:px-16 fade-in">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-blue-800 mb-4">Contact Us</h2>
+            <p class="text-lg text-gray-600">We'd love to hear from you. Please fill out the form below and we'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg slide-up">
+            <form id="contactForm">
+                <div class="mb-6">
+                    <label for="name" class="block text-lg text-gray-700">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="email" class="block text-lg text-gray-700">Your Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="message" class="block text-lg text-gray-700">Your Message</label>
+                    <textarea id="message" name="message" rows="6" class="form-input" placeholder="Write your message" required></textarea>
+                </div>
+
+                <div class="mb-6 text-center">
+                    <button type="submit" class="form-btn">Send Message</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Map Section (Optional) -->
+        <div class="mt-12 max-w-3xl mx-auto">
+            <h3 class="text-2xl font-semibold text-blue-800 mb-6 text-center">Our Location</h3>
+            <div class="aspect-w-16 aspect-h-9">
+                <!-- Embed Google Map -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.56659925907!2d77.4661300959449!3d12.95428023057366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1741896013479!5m2!1sen!2sin" width="750" height="300" style="border:0;" allowfullscreen=""   class="rounded-xl "   loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-4 text-center">
+        <p>&copy; 2025 CyberCrime Portal. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript to Handle Form Submission and Animations -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Here you can handle form submission to the server
+            console.log('Form Submitted');
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Message:', message);
+
+            // Display a confirmation message (this can be customized further)
+            alert('Thank you for your message! We will get back to you soon.');
+            // Optionally, reset the form after submission
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+
+</body>
+</html>

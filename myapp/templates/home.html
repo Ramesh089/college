@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <!-- Link to Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Smooth animation for read more button */
+        .read-more-btn {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .read-more-btn:hover {
+            background-color: #4CAF50;
+            transform: scale(1.1);
+        }
+  
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header>
+        <nav class="flex items-center justify-between bg-gray-800 p-4">
+            <h1 class="text-white text-2xl font-semibold  opacity-50">Cybercrime Portal</h1>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'home' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Home</a></li>
+                <li><a href="{% url 'about' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">About</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Contact</a></li>
+                <li><a href="{% url 'report' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Reports</a></li>
+                {% comment %} <li><a href="{% url 'quize' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Quize</a></li> {% endcomment %}
+            </ul>
+            <div class="flex space-x-4">
+                <a href="{% url 'login' %}"> <button class="bg-orange-300 text-white px-5 py-2 rounded-md hover:bg-orange-500">Login</button></a>
+                <a href="{% url 'login' %}"> <button class="bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-500">Sign Up</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mx-auto px-4 py-12 ">
+        <div class="flex flex-wrap justify-between items-center bg-white shadow-lg rounded-xl p-6 h-[500px]">
+            <!-- Content -->
+            <div class="w-full sm:w-2/3 mb-6 sm:mb-0">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">What is Cyber Crime?</h2>
+                <p class="text-gray-600 text-lg">
+                    Cybercrime is any criminal activity that involves a computer, networked device, or a network. 
+                    It includes a wide range of offenses, from hacking, identity theft, online fraud, to cyberbullying.
+                    As the digital world grows, so does the risk of cybercrime. Criminals use the internet to carry out malicious
+                    activities for financial gain, espionage, or to cause harm.
+                </p>
+
+                <!-- Read More Button -->
+                <button id="readMoreBtn" class="read-more-btn  ml-6 mt-6 px-6 py-3 text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 ">
+                    Read More
+                </button>
+
+                <!-- Hidden content for Read More -->
+                <div id="extraContent" class="hidden mt-4 text-gray-600">
+                    <p class="text-lg">
+                        Cybercrime can affect individuals, businesses, and governments. Common examples of cybercrime include:
+                        hacking into systems, data breaches, phishing scams, and spreading viruses or malware. 
+                        It’s essential to stay informed and take steps to protect personal and organizational data from these cyber threats.
+                    </p>
+                    <p class="text-lg mt-2">
+                        To combat cybercrime, various law enforcement agencies, along with international cooperation, have made efforts to fight against cyber threats.
+                        Awareness, digital literacy, and security measures like strong passwords, encryption, and two-factor authentication can help prevent cybercrimes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="w-full sm:w-1/3" id="rotet">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.otoU3HgzsvyD4SomKf3brwHaE8&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="rounded-lg shadow-lg ml-6 " width="400px">
+            </div>
+        </div>
+    </div>
+    <div class="flex mt-6 gap-7">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+            <!-- Card Image -->
+            <img src="https://tse2.mm.bing.net/th?id=OIP.raJaQfj3KazMRDPuIF2mdgHaEJ&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="w-full h-52 object-cover">
+          
+            <!-- Card Content -->
+             <div class="p-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Cyber Crime Awareness</h2>
+                <p class="text-gray-600 mt-2">Stay informed about the growing threat of cybercrime and how to protect yourself from malicious online activities.</p>
+            </div> 
+
+            <!-- View Button -->
+            <div class="p-6 text-center">
+                <button class="bg-blue-600 text-white py-2 px-6 rounded-md shadow-md hover:bg-blue-500 transition-all duration-300 transform hover:scale-105">
+                    View
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+            <!-- Card Image -->
+            <img src="https://tse3.mm.bing.net/th?id=OIP.x_neJzqJHj5vVNfqKR8ZjgHaEe&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="w-full h-52 object-cover">
+
+            <!-- Card Content -->
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Cyber Crime Awareness</h2>
+                <p class="text-gray-600 mt-2">Stay informed about the growing threat of cybercrime and how to protect yourself from malicious online activities.</p>
+            </div>
+
+            <!-- View Button -->
+            <div class="p-6 text-center">
+                <button class="bg-blue-600 text-white py-2 px-6 rounded-md shadow-md hover:bg-blue-500 transition-all duration-300 transform hover:scale-105">
+                    View
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+  
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+            <!-- Card Image -->
+            <img src="https://tse3.mm.bing.net/th?id=OIP.EFL06oVuLAJWAi15hhBP_wHaEK&pid=Api&P=0&h=220" alt="Cyber Crime Image" class="w-full h-52 object-cover">
+
+            <!-- Card Content -->
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Cyber Crime Awareness</h2>
+                <p class="text-gray-600 mt-2">Stay informed about the growing threat of cybercrime and how to protect yourself from malicious online activities.</p>
+            </div>
+
+            <!-- View Button -->
+            <div class="p-6 text-center">
+                <button class="bg-blue-600 text-white py-2 px-6 rounded-md shadow-md hover:bg-blue-500 transition-all duration-300 transform hover:scale-105">
+                    View
+                </button>
+            </div>
+        </div>
+    </div>
+   
+
+</div>
+
+
+
+    <footer class="bg-gray-800 text-white  pt-7 pb-7  mt-7">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <!-- Column 1: Logo and Description -->
+                <div class="w-full sm:w-1/3 mb-6 sm:mb-0">
+                    <h2 class="text-3xl font-semibold">Cyber Crime Portal</h2>
+                    <p class="mt-2 text-gray-400 text-sm">A platform to report, track, and manage cyber crime cases effectively.</p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="w-full sm:w-1/3 mb-6 sm:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-400">Home</a></li>
+                        <li><a href="#" class="hover:text-gray-400">About</a></li>
+                        <li><a href="#" class="hover:text-gray-400">Contact</a></li>
+                        <li><a href="#" class="hover:text-gray-400">Report a Crime</a></li>
+                        <li><a href="#" class="hover:text-gray-400">Resources</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Information -->
+                <div class="w-full sm:w-1/3">
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400 text-sm">Email: <a href="mailto:support@cybercrimeportal.com" class="text-white hover:text-gray-400">support@cybercrimeportal.com</a></p>
+                    <p class="text-gray-400 text-sm">Phone: +1 234 567 890</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-400">Facebook</a>
+                        <a href="#" class="text-white hover:text-gray-400">Twitter</a>
+                        <a href="#" class="text-white hover:text-gray-400">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section: Copyright and Legal Information -->
+            <div class="mt-8 border-t border-gray-700 pt-4 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2025 Cyber Crime Portal. All rights reserved.</p>
+                <p class="text-gray-400 text-sm">Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // JavaScript to toggle "Read More" content visibility
+        const readMoreBtn = document.getElementById('readMoreBtn');
+        const extraContent = document.getElementById('extraContent');
+
+        readMoreBtn.addEventListener('click', function() {
+            // Toggle the visibility of the extra content
+            extraContent.classList.toggle('hidden');
+
+            // Change the button text accordingly
+            if (extraContent.classList.contains('hidden')) {
+                readMoreBtn.textContent = "Read More";
+            } else {
+                readMoreBtn.textContent = "Read Less";
+            }
+        });
+    </script>
+</body>
+</html>

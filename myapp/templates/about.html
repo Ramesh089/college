@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Cybercrime Portal</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font for Better Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1.5s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-roboto">
+
+
+    <header>
+        <nav class="flex items-center justify-between bg-gray-800 p-4">
+            <h1 class="text-white text-2xl font-semibold  opacity-50">Cybercrime Portal</h1>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'home' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Home</a></li>
+                <li><a href="{% url 'about' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">About</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Contact</a></li>
+                <li><a href="{% url 'report' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Reports</a></li>
+                {% comment %} <li><a href="{% url 'quize' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Quizzes</a></li> {% endcomment %}
+            </ul>
+            <div class="flex space-x-4">
+                <button class="bg-orange-300 text-white px-5 py-2 rounded-md hover:bg-orange-500">Login</button>
+                <button class="bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-500">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section class="bg-white py-16 px-4 sm:px-8 md:px-16">
+        <div class="container mx-auto text-center fade-in">
+            <h1 class="text-4xl font-bold text-blue-800 mb-6">About Us</h1>
+            <p class="text-lg text-gray-600 mb-8">
+                Welcome to CyberCrime Portal, a platform dedicated to raising awareness and providing resources to combat the ever-growing issue of cybercrime. Our mission is to educate, report, and prevent online crime.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Purpose Section -->
+                <div class="bg-blue-100 p-8 rounded-lg shadow-lg slide-up">
+                    <h2 class="text-3xl font-semibold text-blue-800 mb-4">Our Purpose</h2>
+                    <p class="text-lg text-gray-700">
+                        Our platform provides users with the tools to report cybercrimes, access real-time data on cybersecurity issues, and stay informed on the latest cyber threats. We aim to reduce the impact of cybercrime by facilitating swift reporting and response.
+                    </p>
+                </div>
+
+                <!-- Mission Section -->
+                <div class="bg-blue-100 p-8 rounded-lg shadow-lg slide-up">
+                    <h2 class="text-3xl font-semibold text-blue-800 mb-4">Our Mission</h2>
+                    <p class="text-lg text-gray-700">
+                        Our mission is to create a safer digital environment for everyone. We strive to connect individuals, organizations, and governments to work together towards a world where cybercrime is minimized and better controlled.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Vision Section -->
+            <div class="mt-16 bg-blue-200 p-12 rounded-lg shadow-lg fade-in">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4 text-center">Our Vision</h2>
+                <p class="text-lg text-gray-700 text-center">
+                    To lead the fight against cybercrime by educating the public, providing timely reporting services, and offering solutions that make the internet a safer place for everyone.
+                </p>
+            </div>
+
+            <!-- New Section 1: Cybersecurity Tools -->
+            <div class="mt-16 bg-blue-100 p-12 rounded-lg shadow-lg zoom-in">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4 text-center">Cybersecurity Tools</h2>
+                <p class="text-lg text-gray-700 text-center">
+                    We offer various tools to help users protect themselves from online threats. These include guides, real-time threat monitoring, and resources to recognize phishing, malware, and other cybercrime tactics.
+                </p>
+            </div>
+
+            <!-- New Section 2: How to Report -->
+            <div class="mt-16 bg-blue-200 p-12 rounded-lg shadow-lg rotate-in">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4 text-center">How to Report a Cybercrime</h2>
+                <p class="text-lg text-gray-700 text-center">
+                    Reporting cybercrimes is quick and easy. Our platform provides a straightforward way for users to report incidents securely. We ensure that all reports are processed and followed up with the appropriate authorities.
+                </p>
+            </div>
+
+            <!-- New Section 3: Types of Cyber Attacks -->
+            <div class="mt-16 bg-blue-100 p-12 rounded-lg shadow-lg fade-in ">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4 text-center">Types of Cyber Attacks</h2>
+                <p class="text-lg text-gray-700 text-center mb-6">
+                    Cybercrime takes many forms, and it is essential to understand the different types of cyber attacks in order to protect yourself online. Below are some common types of cyberattacks, with real-time examples of how they are being used today.
+                </p>
+
+                <!-- Attack 1: Phishing -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Phishing</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        Phishing is a cyberattack where criminals attempt to trick individuals into revealing sensitive information like passwords or credit card numbers by pretending to be a trusted entity.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        **Real-Time Example**: A recent example of phishing is the widespread attack on Microsoft users, where hackers impersonated Microsoft support and sent emails that appeared legitimate. Users were tricked into entering their credentials, which were then stolen.
+                    </p>
+                </div>
+
+                <!-- Attack 2: Ransomware -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Ransomware</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        Ransomware is a type of malware that encrypts a victim's data, making it inaccessible until a ransom is paid to the attacker.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        **Real-Time Example**: The 2021 attack on the Colonial Pipeline was a significant ransomware attack, which disrupted the U.S. fuel supply. The hackers demanded a ransom in exchange for the decryption key.
+                    </p>
+                </div>
+
+                <!-- Attack 3: DDoS Attack -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">DDoS (Distributed Denial of Service)</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        DDoS attacks occur when a large number of compromised computers are used to flood a server with traffic, making the server slow or inaccessible.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        **Real-Time Example**: In 2020, Amazon Web Services (AWS) suffered one of the largest-ever DDoS attacks, which involved a record-breaking 2.3 terabits per second of traffic. This attack caused significant slowdowns for some of AWS's clients.
+                    </p>
+                </div>
+
+                <!-- Attack 4: Man-in-the-Middle Attack -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Man-in-the-Middle (MitM) Attack</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        MitM attacks involve an attacker intercepting and potentially altering communication between two parties without their knowledge.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        **Real-Time Example**: A recent attack on a popular online banking app used a MitM technique to intercept transactions and steal money by injecting fake pages requesting additional information from users.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-4 text-center">
+        <p>&copy; 2025 CyberCrime Portal. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

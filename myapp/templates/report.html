@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report - Cybercrime Portal</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font for Better Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1.5s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-roboto">
+
+    <!-- Navbar -->
+ 
+    <header>
+        <nav class="flex items-center justify-between bg-gray-800 p-4">
+            <h1 class="text-white text-2xl font-semibold  opacity-50">Cybercrime Portal</h1>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'home' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Home</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">About</a></li>
+                <li><a href="{% url 'contact' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Contact</a></li>
+                <li><a href="{% url 'report' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Reports</a></li>
+                {% comment %} <li><a href="{% url 'quize' %}" class="text-white hover:bg-gray-600 px-3 py-2 rounded-md text-xl">Quizzes</a></li> {% endcomment %}
+            </ul>
+            <div class="flex space-x-4">
+                <button class="bg-orange-300 text-white px-5 py-2 rounded-md hover:bg-orange-500">Login</button>
+                <button class="bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-500">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Report Section -->
+    <section class="bg-white py-16 px-4 sm:px-8 md:px-16">
+        <div class="container mx-auto text-center fade-in">
+            <h1 class="text-4xl font-bold text-blue-800 mb-6">Report Cybercrime</h1>
+            <p class="text-lg text-gray-600 mb-8">
+                If you have experienced or witnessed a cybercrime, please select the type of attack you are reporting from the list below and fill out the corresponding details.
+            </p>
+
+            <div class="bg-blue-100 p-8 rounded-lg shadow-lg mb-10">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">steps for cyber crime repoorts</h2>
+                <ol class="list-decimal list-inside text-lg text-gray-700 space-y-4">
+                    <li><strong>Step 1:</strong> Select the type of cyberattack you are reporting from the dropdown list. The list includes common attacks such as Phishing, Ransomware, DDoS, and Man-in-the-Middle.</li><br>
+                    <li><strong>Step 2:</strong> Fill in the required details based on the attack type. Each form will ask for information relevant to the specific attack you are reporting, such as victim details, attacker details, and incident description.</li><br>
+                    <li><strong>Step 3:</strong> Attach any evidence or screenshots, if available, that can help law enforcement understand the attack better. For example, if you’re reporting a Phishing attack, include the link or email involved.</li><br>
+                    <li class="mr-7"><strong>Step 4:</strong> Review your information to make sure everything is accurate. The more details you provide, the easier it will be for authorities to act on the report.</li><br>
+                    <li><strong>Step 5:</strong> Click the "Submit Report" button. Once submitted, your report will be reviewed by the relevant authorities, and you will be contacted if further action is needed.</li><br>
+                </ol>
+            </div>
+
+            <!-- Report Form Section -->
+            <div class="bg-blue-100 p-8 rounded-lg shadow-lg slide-up">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Select the Type of Cyberattack</h2>
+
+                <form action="#" method="POST" class="space-y-6">
+                    <!-- Attack Type Dropdown -->
+                    <div>
+                        <label for="attack_type" class="block text-lg text-gray-700">Select Attack Type:</label>
+                        <select id="attack_type" name="attack_type" class="w-full p-2 border border-gray-300 rounded-md" required onchange="showAttackForm()">
+                            <option value="">Select an Attack Type</option>
+                            <option value="phishing">Phishing</option>
+                            <option value="ransomware">Ransomware</option>
+                            <option value="ddos">DDoS</option>
+                            <option value="mitm">Man-in-the-Middle</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Form Fields (Initially Hidden) -->
+                    <div id="phishing_form" class="hidden">
+                        <h3 class="text-2xl font-semibold text-blue-800 mb-4">Phishing Attack</h3>
+                        <div>
+                            <label for="email" class="block text-lg text-gray-700">Victim Email:</label>
+                            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-md"  placeholder="enter your email"         required>
+                        </div>
+                        <div>
+                            <label for="attacker_email" class="block text-lg text-gray-700">Attacker's Email:</label>
+                            <input type="email" id="attacker_email" name="attacker_email" class="w-full p-2 border border-gray-300 rounded-md"   placeholder="enter attacker email"  required>
+                        </div>
+                        <div>
+                            <label for="phishing_link" class="block text-lg text-gray-700">Phishing URL/Link:</label>
+                            <input type="url" id="phishing_link" name="phishing_link" class="w-full p-2 border border-gray-300 rounded-md"  placeholder="enter the Phishing URL/Link " required>
+                        </div>
+                        <div>
+                            <label for="incident_details" class="block text-lg text-gray-700">Incident Details:</label>
+                            <textarea id="incident_details" name="incident_details" rows="4" class="w-full p-2 border border-gray-300 rounded-md"  placeholder=" enter how attack harissiated you" required></textarea>
+                        </div>
+                    </div>
+
+                    <div id="ransomware_form" class="hidden">
+                        <h3 class="text-2xl font-semibold text-blue-800 mb-4">Ransomware Attack</h3>
+                        <div>
+                            <label for="victim_name" class="block text-lg text-gray-700">Victim Name:</label>
+                            <input type="text" id="victim_name" name="victim_name" class="w-full p-2 border border-gray-300 rounded-md"  placeholder="enter  Victim Name"  required>
+                        </div>
+                        <div>
+                            <label for="ransomed_files" class="block text-lg text-gray-700">Ransomed Files:</label>
+                            <textarea id="ransomed_files" name="ransomed_files" rows="4" class="w-full p-2 border border-gray-300 rounded-md"   placeholder="enter Ransomed Files"required></textarea>
+                        </div>
+                        <div>
+                            <label for="ransom_amount" class="block text-lg text-gray-700">Ransom Amount Requested:</label>
+                            <input type="number" id="ransom_amount" name="ransom_amount" class="w-full p-2 border border-gray-300 rounded-md"  placeholder="enter Ransom Amount Requested " required>
+                        </div>
+                        <div>
+                            <label for="incident_details_ransomware" class="block text-lg text-gray-700">Incident Details:</label>
+                            <textarea id="incident_details_ransomware" name="incident_details_ransomware" rows="4" class="w-full p-2 border border-gray-300 rounded-md" placeholder=" enter how attack harissiated you" required></textarea>
+                        </div>
+                    </div>
+
+                    <div id="ddos_form" class="hidden">
+                        <h3 class="text-2xl font-semibold text-blue-800 mb-4">DDoS Attack</h3>
+                        <div>
+                            <label for="victim_ip" class="block text-lg text-gray-700">Victim's IP Address:</label>
+                            <input type="text" id="victim_ip" name="victim_ip" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Victim's IP Address"  required>
+                        </div>
+                        <div>
+                            <label for="attack_duration" class="block text-lg text-gray-700">Duration of Attack:</label>
+                            <input type="text" id="attack_duration" name="attack_duration" class="w-full p-2 border border-gray-300 rounded-md" placeholder="enter the  Duration of Attack" required>
+                        </div>
+                        <div>
+                            <label for="incident_details_ddos" class="block text-lg text-gray-700">Incident Details:</label>
+                            <textarea id="incident_details_ddos" name="incident_details_ddos" rows="4" class="w-full p-2 border border-gray-300 rounded-md"  laceholder="enter the  type of attack"  placeholder=" enter how attack harissiated you"required></textarea>
+                        </div>
+                    </div>
+
+                    <div id="mitm_form" class="hidden">
+                        <h3 class="text-2xl font-semibold text-blue-800 mb-4">Man-in-the-Middle (MitM) Attack</h3>
+                        <div>
+                            <label for="victim_device" class="block text-lg text-gray-700">Victim's Device Type:</label>
+                            <input type="text" id="victim_device" name="victim_device" class="w-full p-2 border border-gray-300 rounded-md"  placeholder="enter your email" required>
+                        </div>
+                        <div>
+                            <label for="incident_details_mitm" class="block text-lg text-gray-700">Incident Details:</label>
+                            <textarea id="incident_details_mitm" name="incident_details_mitm" rows="4" class="w-full p-2 border border-gray-300 rounded-md"  placeholder=" enter how attack harissiated you"required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="bg-blue-800 text-white py-2 px-6 rounded-md ">Submit Report</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-4 text-center mb-0">
+        <p>&copy; 2025 CyberCrime Portal. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript to Toggle Forms -->
+    <script>
+        function showAttackForm() {
+            // Hide all attack forms
+            const forms = document.querySelectorAll('[id$="_form"]');
+            forms.forEach(form => form.classList.add('hidden'));
+
+            // Show the selected attack form
+            const attackType = document.getElementById('attack_type').value;
+            if (attackType) {
+                document.getElementById(`${attackType}_form`).classList.remove('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
