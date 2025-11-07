@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -130,3 +132,29 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# AI Service API Keys
+MISTRAL_API_KEY = "BIMQGquGpPZq3M9KESQFIt20xiyyHzbE"  # Get from https://console.mistral.ai/
+OPENAI_API_KEY = "add here api key..." # Get from https://platform.openai.com/api-keys
+ANTHROPIC_API_KEY = "..."  # Get from https://console.anthropic.com/account/keys
+GOOGLE_AI_API_KEY = "..."  # Get from https://makersuite.google.com/app/apikey
+PERPLEXITY_API_KEY = "..."  # Get from https://www.perplexity.ai/settings/api
+DEEPSEEK_API_KEY = "..."  # Get from https://platform.deepseek.com/
+
+# Cache settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+print("OpenAI API Key in settings:", OPENAI_API_KEY)
+
+# reCAPTCHA settings
+RECAPTCHA_PUBLIC_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+RECAPTCHA_PROXY = None
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error'] 
